@@ -6,3 +6,5 @@ init.sh $REPO_URL
 package.sh [$BRANCH_NAME] [multi]
 publish.sh [$BRANCH_NAME]
 ```
+
+Tested on ubuntu with noetic & melodic
