@@ -17,6 +17,9 @@ run_package()
   BRANCH_NAME="${BRANCH_NAME/\//-}"
   echo "$BRANCH_NAME"
 
+  lsblk
+  mkdir debian
+
   bloom-generate rosdebian --os-name ubuntu --ros-distro ${ROS_DISTRO}
 
   if [ $BRANCH_NAME != "master" ]; then
@@ -33,8 +36,7 @@ run_package()
     sed -i "/dh_shlibdeps/ s/\/\//\-$BRANCH_NAME\/\//" debian/rules
   fi
 
-  ls .
-  ls debian
+  ls -l .
   
   debian/rules binary 
 }
