@@ -33,6 +33,9 @@ run_package()
     sed -i "/dh_shlibdeps/ s/\/\//\-$BRANCH_NAME\/\//" debian/rules
   fi
 
+  ls .
+  ls debian
+  
   debian/rules binary 
 }
 
