@@ -21,6 +21,7 @@ fi
 
 echo "Publish Packages to $COMPONENT_NAME"
 
+ssh -p $REPO_SSH_PORT root@$REPO_SSH_HOST "" &> /dev/null
 scp -P $REPO_SSH_PORT ./ros-${ROS_DISTRO}* root@$REPO_SSH_HOST:/repo/incoming/${ROS_DISTRO}/$COMPONENT_NAME
 ssh -p $REPO_SSH_PORT root@$REPO_SSH_HOST "repo-process-include $ROS_DISTRO $COMPONENT_NAME"
 
