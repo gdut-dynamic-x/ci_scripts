@@ -19,11 +19,14 @@ run_package()
 
   bloom-generate rosdebian --os-name ubuntu --ros-distro ${ROS_DISTRO}
 
-  if [ $BRANCH_NAME != "master" ]; then
-    time=$(date "+%Y%m%d%H%M")
+  time=$(date "+%Y%m%d%H%M")
 
-    string=$(sed -n '1p' debian/changelog)
-    string=${string/\)/\~$time\)}
+  string=$(sed -n '1p' debian/changelog)
+  string=${string/\)/\~$time\)}
+  
+  if [ $BRANCH_NAME == "master" ]; then
+    sed -i "1c $string" debian/changelog
+  else
     string=${string/ \(/\-$BRANCH_NAME \(}
     sed -i "1c $string" debian/changelog
 
