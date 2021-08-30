@@ -21,11 +21,11 @@ fi
 
 echo "========"
 echo "Publish Packages to $COMPONENT_NAME"
-ls . | grep ros-${ROS_DISTRO}*
+ls -l
 echo "========"
 
-scp -P $REPO_SSH_PORT ./ros-${ROS_DISTRO}* root@$REPO_SSH_HOST:/repo/incoming/${ROS_DISTRO}/$COMPONENT_NAME &> /dev/null
-ssh -p $REPO_SSH_PORT root@$REPO_SSH_HOST "repo-process-include $ROS_DISTRO $COMPONENT_NAME" &> /dev/null
+scp -P $REPO_SSH_PORT ./ros-${ROS_DISTRO}* root@$REPO_SSH_HOST:/repo/incoming/${ROS_DISTRO}/$COMPONENT_NAME >/dev/null 2>&1
+ssh -p $REPO_SSH_PORT root@$REPO_SSH_HOST "repo-process-include $ROS_DISTRO $COMPONENT_NAME" >/dev/null 2>&1
 
 for DEB_FILE in $PACKAGES; do
   ssh -p $REPO_SSH_PORT root@$REPO_SSH_HOST "rm /repo/incoming/$ROS_DISTRO/$COMPONENT_NAME/$DEB_FILE || true"
