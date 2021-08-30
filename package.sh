@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "$ROS_DISTRO" = "melodic" ]; then
-  apt install -y -qq python-bloom dh-make
+  apt install -y -qq python-bloom dh-make > /dev/null
 else
-  apt install -y -qq python3-bloom dh-make
+  apt install -y -qq python3-bloom dh-make > /dev/null
 fi
 
 run_package()
@@ -39,17 +39,16 @@ run_package()
   debian/rules binary 
 }
 
-echo "---"
-env
-echo "---"
-rosenv
 echo "="
 ls $BASEDIR/target_ws
 echo "=="
 ls $BASEDIR/target_ws/devel
 echo "==="
 source /opt/ros/${ROS_DISTRO}/setup.bash
-source $BASEDIR/target_ws/devel/setup.bash
+source ${BASEDIR}/target_ws/devel/setup.bash
+echo "---"
+env
+echo "---"
 if [ -z $2 ]; then
   echo "Single Package Mode"
   run_package
