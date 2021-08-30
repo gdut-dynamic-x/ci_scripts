@@ -39,8 +39,18 @@ run_package()
   debian/rules binary 
 }
 
-ls ../
-source ../devel/setup.bash
+echo "---"
+env
+echo "---"
+rosenv
+echo "="
+ls ${{ env.BASEDIR }}
+echo "=="
+ls ${{ env.BASEDIR }}/target_ws
+echo "==="
+ls ${{ env.BASEDIR }}/target_ws/devel
+echo "===="
+source ${{ env.BASEDIR }}/target_ws/devel/setup.bash
 if [ -z $2 ]; then
   echo "Single Package Mode"
   run_package
