@@ -39,6 +39,8 @@ run_package()
   debian/rules binary 
 }
 
+ls ../
+source ../devel/setup.bash
 if [ -z $2 ]; then
   echo "Single Package Mode"
   run_package
