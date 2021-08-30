@@ -40,10 +40,11 @@ run_package()
 }
 
 echo "="
-ls $BASEDIR/target_ws
+ls $BASEDIR/target_ws/src
 echo "=="
 ls $BASEDIR/target_ws/devel
 echo "==="
+catkin_make
 source /opt/ros/${ROS_DISTRO}/setup.bash
 source ${BASEDIR}/target_ws/devel/setup.bash
 echo "---"
