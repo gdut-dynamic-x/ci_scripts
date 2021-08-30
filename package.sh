@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "$ROS_DISTRO" = "melodic" ]; then
-  apt install -y -qq python-bloom dh-make > /dev/null
+  apt install -y -qq python-bloom dh-make tree > /dev/null
 else
-  apt install -y -qq python3-bloom dh-make > /dev/null
+  apt install -y -qq python3-bloom dh-make tree > /dev/null
 fi
 
 run_package()
@@ -42,7 +42,9 @@ run_package()
 echo "="
 ls $BASEDIR/target_ws/src
 echo "=="
+ls $BASEDIR/target_ws/devel/share
 ls $BASEDIR/target_ws/devel
+tree $BASEDIR/target_ws/devel
 echo "==="
 source /opt/ros/${ROS_DISTRO}/setup.bash
 source ${BASEDIR}/target_ws/devel/local_setup.bash
