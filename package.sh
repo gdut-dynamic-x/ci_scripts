@@ -44,8 +44,8 @@ ls $BASEDIR/target_ws/src
 echo "=="
 ls $BASEDIR/target_ws/devel
 echo "==="
-catkin_make
 source /opt/ros/${ROS_DISTRO}/setup.bash
+catkin_make
 source ${BASEDIR}/target_ws/devel/setup.bash
 echo "---"
 env
