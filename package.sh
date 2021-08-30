@@ -44,13 +44,12 @@ env
 echo "---"
 rosenv
 echo "="
-ls ${{ env.BASEDIR }}
+ls $BASEDIR/target_ws
 echo "=="
-ls ${{ env.BASEDIR }}/target_ws
+ls $BASEDIR/target_ws/devel
 echo "==="
-ls ${{ env.BASEDIR }}/target_ws/devel
-echo "===="
-source ${{ env.BASEDIR }}/target_ws/devel/setup.bash
+source /opt/ros/${ROS_DISTRO}/setup.bash
+source $BASEDIR/target_ws/devel/setup.bash
 if [ -z $2 ]; then
   echo "Single Package Mode"
   run_package
